@@ -1,7 +1,7 @@
-. ~/.zsh/aliases
+# . ~/.zsh/aliases
 
 # changing directory to code project
-function c { cd ~/code/$1; }
+function w { cd ~/workspace/$1; }
 
 # alternative to "rails" command to use templates
 function railsapp {
@@ -13,3 +13,6 @@ function railsapp {
 
 # misc
 alias reload='. ~/.bash_profile'
+
+alias ss=script/server
+alias sc=script/console
