@@ -3,6 +3,7 @@
 	email = john@beynon.org.uk
 [alias]
 	co = checkout
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 [color]
 	diff = auto
 	status = auto

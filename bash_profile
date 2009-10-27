@@ -2,8 +2,7 @@ source ~/.bash/aliases
 source ~/.bash/completions
 source ~/.bash/paths
 source ~/.bash/config
-
-
+source ~/.bash/variables
 
 # Git Colour Coding
 
@@ -57,4 +56,4 @@ function prompt_func() {
  
 PROMPT_COMMAND=prompt_func
 #export PATH=/usr/local/git/bin:$PATH
-#export MANPATH=/usr/local/git/man:$MANPATH
+#export MANPATH=/usr/local/git/man:$MANPATHif [ -s ~/.rvm/scripts/rvm ] ; then source ~/.rvm/scripts/rvm ; fi

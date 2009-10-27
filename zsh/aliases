@@ -8,9 +8,9 @@ alias ll="ls -l"
 alias la='ls -A'
 
 # git
-alias gl='git pull'
-alias gp='git push'
-alias gd='git diff'
+alias pull='git pull'
+alias push='git push'
+alias diff='git diff'
 alias gc='git commit'
 alias gca='git commit -a'
 alias gco='git checkout'

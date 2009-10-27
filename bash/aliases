@@ -1,4 +1,4 @@
-. ~/.zsh/aliases
+#. ~/.zsh/aliases
 
 # changing directory to code project
 function w { cd ~/workspace/$1; }
@@ -13,3 +13,5 @@ function railsapp {
 
 # misc
 alias reload='. ~/.bash_profile'
+
+alias flushdns='dscacheutil -flushcache'
