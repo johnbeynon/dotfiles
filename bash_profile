@@ -55,5 +55,7 @@ function prompt_func() {
 }
  
 PROMPT_COMMAND=prompt_func
-#export PATH=/usr/local/git/bin:$PATH
-#export MANPATH=/usr/local/git/man:$MANPATHif [ -s ~/.rvm/scripts/rvm ] ; then source ~/.rvm/scripts/rvm ; fi
+export PATH=/opt/local/lib/postgresql83/bin:$PATH
+export ARCHFLAGS="-arch x86_64"
+#export MANPATH=/usr/local/git/man:$MANPATH
+if [ -s ~/.rvm/scripts/rvm ] ; then source ~/.rvm/scripts/rvm ; fi
