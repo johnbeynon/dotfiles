@@ -45,10 +45,10 @@ function parse_git_branch {
 function prompt_func() {
     previous_return_value=$?;
     # prompt="${TITLEBAR}$BLUE[$RED\w$GREEN$(__git_ps1)$YELLOW$(git_dirty_flag)$BLUE]$COLOR_NONE "
-    prompt="${TITLEBAR} \w${GREEN}$(parse_git_branch) ${COLOR_NONE} "
+    prompt="${TITLEBAR} \w${GREEN}$(parse_git_branch) ${COLOR_NONE}"
     if test $previous_return_value -eq 0
     then
-        PS1="${prompt}➔ "
+        PS1="[$(~/.rvm/bin/rvm-prompt)] ${prompt}➔ "
     else
         PS1="${prompt} ${RED}➔${COLOR_NONE} "
     fi
@@ -59,3 +59,8 @@ export PATH=/opt/local/lib/postgresql83/bin:$PATH
 export ARCHFLAGS="-arch x86_64"
 #export MANPATH=/usr/local/git/man:$MANPATH
 if [ -s ~/.rvm/scripts/rvm ] ; then source ~/.rvm/scripts/rvm ; fi
+
+
+# MacPorts Installer addition on 2010-08-06_at_08:08:45: adding an appropriate PATH variable for use with MacPorts.
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.

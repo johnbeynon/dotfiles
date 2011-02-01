@@ -1,7 +1,6 @@
 # changing directory to code project
 function w { cd ~/workspace/$1; }
 function db { cd ~/Dropbox/workspace/$1; }
-function cf9 { cd /Applications/JRun4/servers/cfusion/cfusion-ear/cfusion-war/$1; }
 
 # cd
 alias ..='cd ..'
@@ -24,24 +23,17 @@ alias gs='git status'
 alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
 
 # rails
-alias sc='script/console'
-alias ss='script/server'
-alias sg='script/generate'
-alias a='autotest -rails'
-alias tlog='tail -f log/development.log'
-alias scaffold='script/generate nifty_scaffold'
-alias migrate='rake db:migrate db:test:clone'
-alias rst='touch tmp/restart.txt'
-
 alias rs='rails s'
 alias rc='rails c'
 alias rsd='rails s -u'
+
+function rsn(){
+  rails new $1 -m https://github.com/johnbeynon/rails-templates/raw/master/basic.rb -f;
+}
+
+alias pg="sudo su postgres -c '/opt/local/lib/postgresql83/bin/postgres -D /opt/local/var/db/postgresql83/defaultdb'"
 
 # commands starting with % for pasting from web
 alias %=' '
 
 alias flushdns='dscacheutil -flushcache'
-alias cfusion="/Applications/JRun4/bin/jrun -start 'cfusion'"
-
-alias heroku_monochrome='cp credentials credentials_johnb | mv credentials_monochrome credentials'
-alias heroku_johnb='cp credentials credentials_monochrome | mv credentials_johnb credentials'
