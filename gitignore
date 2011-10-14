@@ -1,3 +1,6 @@
 .DS_Store
 .svn
 *~
+.rvmrc
+.idea
+bash/kyan_aliases

@@ -26,12 +26,23 @@ alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
 alias rs='rails s'
 alias rc='rails c'
 alias rsd='rails s -u'
+alias rst='touch tmp/restart.txt'
+alias tlog='tail -f log/development.log'
+
+alias ss='script/server'
+alias sc='script/console'
+alias ssd='script/server -u'
 
 function rsn(){
   rails new $1 -m https://github.com/johnbeynon/rails-templates/raw/master/basic.rb -f;
 }
 
-alias pg="sudo su postgres -c '/opt/local/lib/postgresql83/bin/postgres -D /opt/local/var/db/postgresql83/defaultdb'"
+alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+alias mysqlstart='mysql.server start'
+alias mysqlstop='mysql.server stop'
+alias redis='redis-server /usr/local/etc/redis.conf'
+alias cov='open coverage/index.html'
 
 # commands starting with % for pasting from web
 alias %=' '

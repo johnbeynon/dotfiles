@@ -1,6 +1,6 @@
 [user]
 	name = John Beynon
-	email = john@monochrome.co.uk
+	email = john@beynon.org.uk
 [alias]
 	co = checkout
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
@@ -13,7 +13,5 @@
 	editor = mate -w
 [apply]
 	whitespace = nowarn
-[codebase]
-	username = john
-	apikey = nf2wqgg4237su9xx0ia1172ucc3aiasvsy3p7huy
-	domain = monochrome.codebasehq.com
+[github]
+	user = johnbeynon

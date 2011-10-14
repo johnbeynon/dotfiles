@@ -1,4 +1,5 @@
 source ~/.bash/aliases
+source ~/.bash/kyan_aliases
 source ~/.bash/completions
 source ~/.bash/paths
 source ~/.bash/config
@@ -56,11 +57,7 @@ function prompt_func() {
  
 PROMPT_COMMAND=prompt_func
 export PATH=/opt/local/lib/postgresql83/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
+export NODE_PATH="/usr/local/lib/node"
 export ARCHFLAGS="-arch x86_64"
-#export MANPATH=/usr/local/git/man:$MANPATH
 if [ -s ~/.rvm/scripts/rvm ] ; then source ~/.rvm/scripts/rvm ; fi
-
-
-# MacPorts Installer addition on 2010-08-06_at_08:08:45: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
