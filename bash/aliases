@@ -42,6 +42,7 @@ alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias mysqlstart='mysql.server start'
 alias mysqlstop='mysql.server stop'
 alias redis='redis-server /usr/local/etc/redis.conf'
+alias memcache='/usr/local/bin/memcached'
 alias cov='open coverage/index.html'
 
 # commands starting with % for pasting from web

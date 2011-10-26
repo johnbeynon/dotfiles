@@ -15,3 +15,5 @@
 	whitespace = nowarn
 [github]
 	user = johnbeynon
+[mergetool]
+	keepBackup = true
