@@ -49,7 +49,7 @@ function prompt_func() {
     prompt="${TITLEBAR} \w${GREEN}$(parse_git_branch) ${COLOR_NONE}"
     if test $previous_return_value -eq 0
     then
-        PS1="[$(~/.rvm/bin/rvm-prompt)] ${prompt}➔ "
+        PS1="${prompt}➔ "
     else
         PS1="${prompt} ${RED}➔${COLOR_NONE} "
     fi

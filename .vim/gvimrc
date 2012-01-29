@@ -1,0 +1,21 @@
+set encoding=utf-8
+
+" Searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set guifont=Monaco:h14
+
+filetype plugin indent on " Enable filetype-specific indenting and plugins
+
+colorscheme ir_black
+
+if has("gui_macvim")
+	macmenu &File.New\ Tab key=<nop>
+  " commnd-t to command + t
+	map <D-t> :CommandT<CR>
+  " Ack to command + shift + f
+  map <D-F> :Ack<space> 
+endif
+

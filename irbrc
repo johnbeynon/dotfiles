@@ -1,6 +1,23 @@
 #!/usr/bin/ruby
+require "rubygems"
 require 'irb/completion'
 require 'irb/ext/save-history'
+require "awesome_print"
+
+unless IRB.version.include?('DietRB')
+  IRB::Irb.class_eval do
+    def output_value
+      ap @context.last_value
+    end
+  end
+else # MacRuby
+  IRB.formatter = Class.new(IRB::Formatter) do
+    def inspect_object(object)
+      object.ai
+    end
+  end.new
+end
+
 
 IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
