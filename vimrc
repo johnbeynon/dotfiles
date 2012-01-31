@@ -1,8 +1,14 @@
-call pathogen#runtime_append_all_bundles()
+" Load pathogen and help tags
+call pathogen#infect()
+call pathogen#helptags()
 
+" We're running Vim, not Vi!
 set nocompatible
 
-set hidden
+" Enable syntax highlighting
+syntax on
+
+" Set the color scheme
 colorscheme ir_black
 
 " Store temporary files in a central spot
@@ -12,28 +18,30 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
+" Enable filetype-specific indenting and plugins
 filetype plugin indent on
 
-" MacVim specifics
-if has("gui_running")
-  set guifont=Monaco:h14
-  " Hide the MacVim menu bars 
-  set guioptions=aAce
-
-  set lines=100
-  set columns=171
-  " Unmap existing command + t 
-  macmenu &File.New\ Tab key=<nop>
-  " commnd-t to command + t
-	map <D-t> :CommandT<CR>
-  " Ack to command + shift + f
-  map <D-F> :Ack<space>
-endif
-
+" highligh the current line
 set cursorline
 set number
+
+" minimal number of columns to use for the line number
 set numberwidth=5
 
+" enable unsaved buffers
+set hidden
+
+set expandtab
+set tabstop=2
+set shiftwidth=4
+set softtabstop=4
+set autoindent
+set smarttab
+
+" Always show the status line
+set laststatus=2
+
+" Remap leader to comma
 let mapleader=","
 
 function! ShowRoutes()
@@ -53,16 +61,27 @@ function! ShowRoutes()
   :normal dd
 endfunction
 
+" Minibuf Explorer
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
+let g:miniBufExplUseSingleClick = 1
+
+" powerline
+let g:Powerline_symbols = 'fancy'
+
 map <leader>gR :call ShowRoutes()<cr>
+map <leader>ga :CommandTFlush<cr>\|:CommandT app/assets<cr>
 map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
 map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
 map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
 map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
 map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
 map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
-map <leader>gs :CommandTFlush<cr>\|:CommandT public/stylesheets/sass<cr>
-map <leader>gf :CommandTFlush<cr>\|:CommandT features<cr>
-map <leader>gg :topleft 100 :split Gemfile<cr>
+map <leader>gs :CommandTFlush<cr>\|:CommandT spec<cr>
+map <leader>gg :topleft 10 :split Gemfile<cr>
+map <leader>gr :topleft 10 :split config/routes.rb<cr>
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 
