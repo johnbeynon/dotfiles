@@ -1,5 +1,4 @@
 source ~/.bash/aliases
-source ~/.bash/kyan_aliases
 source ~/.bash/completions
 source ~/.bash/paths
 source ~/.bash/config

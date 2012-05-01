@@ -9,8 +9,6 @@ set nocompatible
 syntax on
 
 " Set the color scheme
-set t_Co=256
-let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
 
@@ -35,9 +33,8 @@ set numberwidth=5
 set hidden
 
 set expandtab
-set tabstop=1
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
 set autoindent
 set smarttab
 set incsearch " make search work like FIND in browsers
@@ -91,7 +88,12 @@ map <leader>gr :topleft 10 :split config/routes.rb<cr>
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 map <leader>t :CommandT<cr>
-" let g:CommandTCancelMap='<Esc>'
+
+" Redo
+map U <C-r>
+
+" Map NERDTreeToggle to convenient key
+nmap <leader>n :NERDTreeToggle<cr>
 
 " Let uppercase W write the file
 command! W :w

@@ -1,6 +1,5 @@
 # changing directory to code project
-function w { cd ~/workspace/$1; }
-function db { cd ~/Dropbox/workspace/$1; }
+function w { cd ~/Google\ Drive/workspace/$1; }
 
 # cd
 alias ..='cd ..'

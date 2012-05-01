@@ -1,6 +1,0 @@
-# ssh connections
-alias elevate='ssh rails@elevatedata-001.vm.brightbox.net'
-alias mashuk='ssh kyan@81.19.55.251'
-alias mashoz='ssh mash@184.106.218.38'
-alias circle='ssh circle@184.106.178.195'
-alias intranet='ssh nick@miranda.dev.kyanmedia.net'
