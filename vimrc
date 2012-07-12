@@ -10,7 +10,7 @@ syntax on
 
 " Set the color scheme
 set background=dark
-colorscheme solarized
+colorscheme molokai
 
 " Store temporary files in a central spot
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -48,6 +48,11 @@ set laststatus=2
 " Remap leader to comma
 let mapleader=","
 
+" Map ; to : so one keypress less
+nnoremap ; :
+
+nnoremap <leader>w <C-w>v<C-w>l " ,w split verically and switch to new split
+
 function! ShowRoutes() " Requires 'scratch' plugin
   :topleft 100 :split __Routes__
   " Make sure Vim doesn't write __Routes__ as a file
@@ -64,30 +69,19 @@ function! ShowRoutes() " Requires 'scratch' plugin
   :normal dd
 endfunction
 
-" Minibuf Explorer
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
-let g:miniBufExplUseSingleClick = 1
-
 " powerline
 let g:Powerline_symbols = 'fancy'
 
 map <leader>gR :call ShowRoutes()<cr>
-map <leader>ga :CommandTFlush<cr>\|:CommandT app/assets<cr>
-map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
-map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
-map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
-map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
-map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
-map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
-map <leader>gs :CommandTFlush<cr>\|:CommandT spec<cr>
+
+" Map CtrlP to Command-T - weird huh?
+map <leader>t :CtrlP<cr>
+map <leader>b :CtrlPBuffer<cr>
+map <leader>m :CtrlPMRUFiles<cr>
+
+
 map <leader>gg :topleft 10 :split Gemfile<cr>
 map <leader>gr :topleft 10 :split config/routes.rb<cr>
-map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
-map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
-map <leader>t :CommandT<cr>
 
 " Redo
 map U <C-r>
@@ -103,67 +97,25 @@ noremap <Up> <nop>
 noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
+inoremap <Up> <nop>
+inoremap <Down> <nop>
+inoremap <Left> <nop>
+inoremap <Right> <nop>
+nnoremap j gj
+nnoremap k gk
 
-" Autocommands
-" autocmd! bufwritepost .vimrc so % " automatically SOURCE vimrc when it's saved
-"
+" CtrlP OS-X Menu remapping
+if has("gui_macvim")
+  macmenu &File.New\ Tab key=<D-S-t>
+endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Running tests (FROM https://github.com/garybernhardt/dotfiles/blob/master/.vimrc)
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"use Ctrl+L to toggle the line number counting method
+function! g:ToggleNuMode()
+  if(&rnu == 1)
+    set nu
+  else
+    set rnu
+  endif
+endfunc
 
-function! RunTests(filename)
-    " Write the file and run tests for the given filename
-    :w
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    if match(a:filename, '\.feature$') != -1
-        exec ":!script/features " . a:filename
-    else
-        if filereadable("script/test")
-            exec ":!script/test " . a:filename
-        elseif filereadable("Gemfile")
-            exec ":!bundle exec rspec --color " . a:filename
-        else
-            exec ":!rspec --color " . a:filename
-        end
-    end
-endfunction
-
-function! SetTestFile()
-    " Set the spec file that tests will be run for.
-    let t:grb_test_file=@%
-endfunction
-
-function! RunTestFile(...)
-    if a:0
-        let command_suffix = a:1
-    else
-        let command_suffix = ""
-    endif
-
-    " Run the tests for the previously-marked file.
-    let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
-    if in_test_file
-        call SetTestFile()
-    elseif !exists("t:grb_test_file")
-        return
-    end
-    call RunTests(t:grb_test_file . command_suffix)
-endfunction
-
-function! RunNearestTest()
-    let spec_line_number = line('.')
-    call RunTestFile(":" . spec_line_number . " -b")
-endfunction
-
-"#map <leader>t :call RunTestFile()<cr>
-"#map <leader>T :call RunNearestTest()<cr>
-"#map <leader>a :call RunTests('')<cr>
-"#map <leader>c :w\|:!script/features<cr>
-"#map <leader>w :w\|:!script/features --profile wip<cr>
-
+nnoremap <C-L> :call g:ToggleNuMode()<cr>

@@ -61,3 +61,11 @@ export NODE_PATH="/usr/local/lib/node"
 export NODE_PATH="/usr/local/lib/node_modules"
 export ARCHFLAGS="-arch x86_64"
 if [ -s ~/.rvm/scripts/rvm ] ; then source ~/.rvm/scripts/rvm ; fi
+
+hitch() {
+  command hitch "$@"
+  if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi
+}
+alias unhitch='hitch -u'
+# Uncomment to persist pair info between terminal instances
+# hitch
