@@ -34,7 +34,6 @@ plugins=(git bundler brew gem jbeynon)
 source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
 
-
 # Customize to your needs..
 export PATH="/usr/local/bin:$PATH"
 #export PATH=/Users/john/.rvm/gems/ruby-1.9.3-p194/bin:/Users/john/.rvm/gems/ruby-1.9.3-p194@global/bin:/Users/john/.rvm/rubies/ruby-1.9.3-p194/bin:/Users/john/.rvm/bin:/usr/local/bin:/usr/local/share/npm/bin:/opt/local/lib/postgresql83/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
@@ -45,3 +44,5 @@ hitch() {
   if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi
 }
 alias unhitch='hitch -u'
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

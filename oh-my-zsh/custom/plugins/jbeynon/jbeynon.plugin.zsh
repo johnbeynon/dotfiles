@@ -31,8 +31,22 @@ alias memcache='/usr/local/bin/memcached'
 alias mongodb='mongod run --config /usr/local/Cellar/mongodb/2.0.2-x86_64/mongod.conf'
 alias cov='open coverage/index.html'
 alias elasticstart='elasticsearch -f -D es.config=/usr/local/Cellar/elasticsearch/0.19.4/config/elasticsearch.yml'
-#
-# alias tlog='tail -f log/development.log'
+
+# Rails stuff
+alias rs='rails s'
+alias rc='rails c'
+alias rsd='rails s -u'
+alias dbm='rake db:migrate'
+alias dbmc='rake db:migrate db:clone'
+alias dbrst='rake db:reset'
+alias rst='touch tmp/restart.txt'
+alias tlog='tail -f log/development.log'
+
+# Legacy rails
+alias ss='script/server'
+alias sc='script/console'
+alias ssd='script/server -u'
+
 #
 # # add plugin's bin directory to path
 # export PATH="$(dirname $0)/bin:$PATH"
