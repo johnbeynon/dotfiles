@@ -46,3 +46,5 @@ hitch() {
 alias unhitch='hitch -u'
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export CC=/usr/local/bin/gcc-4.2
+export CPPFLAGS=-I/opt/X11/include
