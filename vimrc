@@ -10,7 +10,7 @@ syntax on
 
 " Set the color scheme
 set background=dark
-colorscheme molokai
+colorscheme solarized
 
 " Store temporary files in a central spot
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp

@@ -4,7 +4,8 @@ source ~/.bash/paths
 source ~/.bash/config
 source ~/.bash/variables
 
-# Git Colour Coding
+#  Git Colour Coding
+TERM=xterm-256color
 
 RED="\[\033[0;31m\]"
 YELLOW="\[\033[0;33m\]"
