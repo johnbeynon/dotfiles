@@ -21,7 +21,7 @@ ZSH_THEME="jbeynon"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
@@ -35,7 +35,7 @@ source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
 
 # Customize to your needs..
-export PATH="/usr/local/bin:$PATH"
+export PATH="$PATH:/usr/local/bin"
 #export PATH=/Users/john/.rvm/gems/ruby-1.9.3-p194/bin:/Users/john/.rvm/gems/ruby-1.9.3-p194@global/bin:/Users/john/.rvm/rubies/ruby-1.9.3-p194/bin:/Users/john/.rvm/bin:/usr/local/bin:/usr/local/share/npm/bin:/opt/local/lib/postgresql83/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 
 # Add the following to your ~/.bashrc or ~/.zshrc
@@ -47,4 +47,4 @@ alias unhitch='hitch -u'
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export CC=/usr/local/bin/gcc-4.2
-export CPPFLAGS=-I/opt/X11/include
+export CPPFLAGS=-I/opt/X10/include

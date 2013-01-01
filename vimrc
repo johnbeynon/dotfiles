@@ -42,6 +42,10 @@ set hlsearch " highlight search terms
 set autoread " reload file if it's changed outside VIM
 set nowrap
 
+" Display a marker at 80 char width
+set tw=80
+set cc=+1
+
 " Always show the status line
 set laststatus=2
 
