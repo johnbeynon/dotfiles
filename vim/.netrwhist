@@ -1,15 +1,7 @@
 let g:netrw_dirhistmax  =10
-<<<<<<< HEAD
-let g:netrw_dirhist_cnt =6
-=======
 let g:netrw_dirhist_cnt =5
->>>>>>> bd97a2c926e6bbbd2079530afa620f2bb8cafdd2
 let g:netrw_dirhist_1='/Users/john/Google Drive/workspace/dotfiles'
 let g:netrw_dirhist_2='/Users/john/workspace/kyan/chef/cookbooks/kyan'
 let g:netrw_dirhist_3='/Users/john/workspace/kyan/chef/cookbooks/mymeds'
 let g:netrw_dirhist_4='/Users/john/workspace/kyan/chef'
 let g:netrw_dirhist_5='/Users/john/workspace/kyan/ams.stonehaven-uk.com/.git'
-<<<<<<< HEAD
-let g:netrw_dirhist_6='/private/etc/paths.d'
-=======
->>>>>>> bd97a2c926e6bbbd2079530afa620f2bb8cafdd2
