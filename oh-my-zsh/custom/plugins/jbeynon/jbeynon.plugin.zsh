@@ -51,6 +51,7 @@ alias ss='script/server'
 alias sc='script/console'
 alias ssd='script/server -u'
 
+
 #
 # # add plugin's bin directory to path
 # export PATH="$(dirname $0)/bin:$PATH"

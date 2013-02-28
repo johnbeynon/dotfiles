@@ -31,7 +31,6 @@ set numberwidth=5
 
 " enable unsaved buffers
 set hidden
-
 set expandtab
 set tabstop=2
 set shiftwidth=2
@@ -41,6 +40,10 @@ set incsearch " make search work like FIND in browsers
 set hlsearch " highlight search terms
 set autoread " reload file if it's changed outside VIM
 set nowrap
+
+" Display a marker at 80 char width
+set tw=80
+set cc=+1
 
 " Always show the status line
 set laststatus=2
@@ -115,6 +118,10 @@ inoremap <Left> <nop>
 inoremap <Right> <nop>
 nnoremap j gj
 nnoremap k gk
+
+" Map jj to <esc> to get out of insert mode quickly
+:imap jj <Esc>
+:imap jk <Esc>
 
 " CtrlP OS-X Menu remapping
 if has("gui_macvim")
