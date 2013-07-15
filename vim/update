@@ -1,2 +1,0 @@
-echo "Updating Submodule'd vim bundles"
-git submodule foreach git pull origin master
