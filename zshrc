@@ -35,7 +35,7 @@ source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
 
 # Customize to your needs..
-export PATH="$PATH:/usr/local/bin"
+export PATH="/usr/local/bin:$PATH"
 #export PATH=/Users/john/.rvm/gems/ruby-1.9.3-p194/bin:/Users/john/.rvm/gems/ruby-1.9.3-p194@global/bin:/Users/john/.rvm/rubies/ruby-1.9.3-p194/bin:/Users/john/.rvm/bin:/usr/local/bin:/usr/local/share/npm/bin:/opt/local/lib/postgresql83/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 
 # Add the following to your ~/.bashrc or ~/.zshrc

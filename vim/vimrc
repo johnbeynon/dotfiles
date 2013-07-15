@@ -1,41 +1,87 @@
-call pathogen#runtime_append_all_bundles()
+set nocompatible               " be iMproved
+filetype off                   " required!
 
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+"
+" original repos on github
+" Bundle 'Lokaltog/powerline'
+Bundle 'kien/ctrlp.vim'
+Bundle 'mileszs/ack.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'tpope/vim-rails'
+
+" Github repos of the user 'vim-scripts'
+" => can omit the username part
+Bundle 'powerline'
+
+" non github repos
+" Bundle 'git://git.wincent.com/command-t.git'
+" ...
+
+" We're running Vim, not Vi!
 set nocompatible
-syntax enable
-set encoding=utf-8
-set showcmd
-filetype plugin indent on
-"call pathogen#infect()
 
-set number
-set ruler
+" Enable syntax highlighting
+syntax on
 
-" Whitespace stuff
-set nowrap
-set tabstop=2 shiftwidth=2
-set expandtab
+" Set the color scheme
+set background=dark
+colorscheme solarized
+
+" Store temporary files in a central spot
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+
+" allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-" Searching
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
+" Enable filetype-specific indenting and plugins
+filetype plugin indent on
 
-" Display
-set guifont=Monaco:h12
-color molokai
-set guioptions=aAce
-set cpoptions+=$
+" highligh the current line
+set cursorline
+set number
+
+" minimal number of columns to use for the line number
+set numberwidth=5
+
+" enable unsaved buffers
 set hidden
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set autoindent
+set smarttab
+set incsearch " make search work like FIND in browsers
+set hlsearch " highlight search terms
+set autoread " reload file if it's changed outside VIM
+set nowrap
 
+" Display a marker at 80 char width
+set tw=80
+set cc=+1
+
+" Always show the status line
+set laststatus=2
+
+" Remap leader to comma
 let mapleader=","
 
-map <leader>gg :topleft 10 :split Gemfile<cr>
-map <leader>gr :topleft 10 :split config/routes.rb<cr>
-function! ShowRoutes()
-  " Requires 'scratch' plugin
-  :topleft 10 :split __Routes__
+" Map ; to : so one keypress less
+nnoremap ; :
+
+nnoremap <leader>w <C-w>v<C-w>l " ,w split verically and switch to new split
+
+function! ShowRoutes() " Requires 'scratch' plugin
+  :topleft 100 :split __Routes__
   " Make sure Vim doesn't write __Routes__ as a file
   :set buftype=nofile
   " Delete everything
@@ -49,4 +95,70 @@ function! ShowRoutes()
   " Delete empty trailing line
   :normal dd
 endfunction
+
+" powerline
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+
 map <leader>gR :call ShowRoutes()<cr>
+
+" Map CtrlP to Command-T - weird huh?
+map <leader>t :CtrlP<cr>
+map <leader>b :CtrlPBuffer<cr>
+map <leader>m :CtrlPMRUFiles<cr>
+
+
+map <leader>gg :topleft 10 :split Gemfile<cr>
+map <leader>gr :topleft 10 :split config/routes.rb<cr>
+
+" Redo
+map U <C-r>
+
+" Map NERDTreeToggle to convenient key
+nmap <leader>n :NERDTreeToggle<cr>
+
+" Let uppercase W write the file
+command! W :w
+
+" Map moving text ALT + 
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
+" Map copy to Command C
+vmap <C-x> :!pbcopy<CR>  
+vmap <C-c> :w !pbcopy<CR><CR> 
+
+" Disable the cursor keys - you'll thank me later!
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
+inoremap <Up> <nop>
+inoremap <Down> <nop>
+inoremap <Left> <nop>
+inoremap <Right> <nop>
+nnoremap j gj
+nnoremap k gk
+
+" Map jj to <esc> to get out of insert mode quickly
+:imap jj <Esc>
+:imap jk <Esc>
+
+" CtrlP OS-X Menu remapping
+if has("gui_macvim")
+  macmenu &File.New\ Tab key=<D-S-t>
+endif
+
+"use Ctrl+L to toggle the line number counting method
+function! g:ToggleNuMode()
+  if(&rnu == 1)
+    set nu
+  else
+    set rnu
+  endif
+endfunc
+
+nnoremap <C-L> :call g:ToggleNuMode()<cr>
