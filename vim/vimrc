@@ -17,6 +17,9 @@ Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-rails'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
 
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
@@ -106,7 +109,6 @@ map <leader>t :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
 map <leader>m :CtrlPMRUFiles<cr>
 
-
 map <leader>gg :topleft 10 :split Gemfile<cr>
 map <leader>gr :topleft 10 :split config/routes.rb<cr>
 
@@ -132,16 +134,16 @@ vmap <C-x> :!pbcopy<CR>
 vmap <C-c> :w !pbcopy<CR><CR> 
 
 " Disable the cursor keys - you'll thank me later!
-noremap <Up> <nop>
-noremap <Down> <nop>
-noremap <Left> <nop>
-noremap <Right> <nop>
-inoremap <Up> <nop>
-inoremap <Down> <nop>
-inoremap <Left> <nop>
-inoremap <Right> <nop>
-nnoremap j gj
-nnoremap k gk
+"noremap <Up> <nop>
+"noremap <Down> <nop>
+"noremap <Left> <nop>
+"noremap <Right> <nop>
+"inoremap <Up> <nop>
+"inoremap <Down> <nop>
+"inoremap <Left> <nop>
+"inoremap <Right> <nop>
+"nnoremap j gj
+"nnoremap k gk
 
 " Map jj to <esc> to get out of insert mode quickly
 :imap jj <Esc>
