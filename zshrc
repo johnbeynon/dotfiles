@@ -1,50 +1,59 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+export EDITOR='vim'
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="jbeynon"
-
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git bundler brew gem jbeynon)
-
-source $ZSH/oh-my-zsh.sh
-unsetopt correct_all
-
-# Customize to your needs..
 export PATH="/usr/local/bin:$PATH"
-#export PATH=/Users/john/.rvm/gems/ruby-1.9.3-p194/bin:/Users/john/.rvm/gems/ruby-1.9.3-p194@global/bin:/Users/john/.rvm/rubies/ruby-1.9.3-p194/bin:/Users/john/.rvm/bin:/usr/local/bin:/usr/local/share/npm/bin:/opt/local/lib/postgresql83/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 
-# Add the following to your ~/.bashrc or ~/.zshrc
+# Load completions for Ruby, Git, etc.
+autoload compinit
+compinit
+
+# Colors
+autoload -U colors
+colors
+
+setopt prompt_subst
+
+# Autocompletes for w and k
+w() { cd ~/Google\ Drive/workspace/$1; }
+_w() { _files -W ~/Google\ Drive/workspace -/; }
+compdef _w w
+
+k() { cd ~/workspace/kyan/$1; }
+_k() { _files -W ~/workspace/kyan -/; }
+compdef _k k
+
+# Show completion on first TAB
+setopt menucomplete
+
+GIT_PROMPT_PREFIX="%{$fg[green]%}[%{$reset_color%}" # outputs [ in green
+GIT_PROMPT_SUFFIX="%{$fg[green]%}]%{$reset_color%}" # outputs ] in green
+
+parse_git_branch() {
+  (git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD) 2> /dev/null
+}
+
+# If inside a Git repository, print its branch and state
+git_prompt_string() {
+local git_where="$(parse_git_branch)"
+[ -n "$git_where" ] && echo "$GIT_PROMPT_PREFIX%{$fg[yellow]%}${git_where#(refs/heads/|tags/)}$GIT_PROMPT_SUFFIX"
+}
+
+PROMPT='%~$(git_prompt_string) $ '
+
 hitch() {
   command hitch "$@"
   if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi
 }
 alias unhitch='hitch -u'
 
-#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-export CC=/usr/local/bin/gcc-4.2
-export CPPFLAGS=-I/opt/X10/include
+# Aliases
+alias gs='git status'
+alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+alias mysqlstart='mysql.server start'
+alias mysqlstop='mysql.server stop'
+alias rs='rails s'
+alias rc='rails c'
+alias h='heroku'
+alias fs='foreman start'
+
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
