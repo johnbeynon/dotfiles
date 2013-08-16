@@ -12,8 +12,16 @@ colors
 
 setopt prompt_subst
 
+# History
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.history
+
+setopt inc_append_history
+setopt share_history
+
 # Autocompletes for w and k
-w() { cd ~/Google\ Drive/workspace/$1; }
+w() { cd ~/code/$1; }
 _w() { _files -W ~/Google\ Drive/workspace -/; }
 compdef _w w
 
@@ -49,6 +57,7 @@ alias unhitch='hitch -u'
 alias gs='git status'
 alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+alias redis='redis-server /usr/local/etc/redis.conf'
 alias mysqlstart='mysql.server start'
 alias mysqlstop='mysql.server stop'
 alias rs='rails s'
@@ -57,3 +66,8 @@ alias h='heroku'
 alias fs='foreman start'
 
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+
+# Source stuff
+source ~/.bin/tmuxinator.zsh
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
