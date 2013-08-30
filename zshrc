@@ -69,5 +69,6 @@ alias fs='foreman start'
 
 # Source stuff
 source ~/.bin/tmuxinator.zsh
+source ~/code/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
