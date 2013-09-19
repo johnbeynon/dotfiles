@@ -53,22 +53,13 @@ hitch() {
 }
 alias unhitch='hitch -u'
 
-# Aliases
-alias gs='git status'
-alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
-alias redis='redis-server /usr/local/etc/redis.conf'
-alias mysqlstart='mysql.server start'
-alias mysqlstop='mysql.server stop'
-alias rs='rails s'
-alias rc='rails c'
-alias h='heroku'
-alias fs='foreman start'
-
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
 # Source stuff
 source ~/.bin/tmuxinator.zsh
+source ~/.bin/git-flow-completion.zsh
 source ~/code/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/code/dotfiles/aliases
+source ~/code/dotfiles/heroku
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

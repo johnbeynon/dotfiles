@@ -16,7 +16,9 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-bundler'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
@@ -38,6 +40,8 @@ syntax on
 " Set the color scheme
 set background=dark
 colorscheme solarized
+
+runtime macros/matchit.vim
 
 " Store temporary files in a central spot
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp

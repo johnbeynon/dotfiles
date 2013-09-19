@@ -1,0 +1,8 @@
+deploy() {
+  heroku maintenance:on -a $1
+  git tag production_release_`date +"%Y%m%d-%H%M%S"`
+  git push --tags
+	git push production production:master
+	heroku run rake db:migrate -a $1
+	heroku maintenance:off -a $a
+}
