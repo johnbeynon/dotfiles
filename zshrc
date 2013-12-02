@@ -63,3 +63,6 @@ source ~/code/dotfiles/aliases
 source ~/code/dotfiles/heroku
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# added by travis gem
+source /Users/john/.travis/travis.sh

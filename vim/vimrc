@@ -18,10 +18,12 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-bundler'
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
+
 
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
@@ -168,3 +170,6 @@ function! g:ToggleNuMode()
 endfunc
 
 nnoremap <C-L> :call g:ToggleNuMode()<cr>
+
+" Switch from ack to ag
+let g:ackprg = 'ag --nogroup --nocolor --column'
