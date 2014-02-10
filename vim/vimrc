@@ -11,7 +11,7 @@ Bundle 'gmarik/vundle'
 " My Bundles here:
 "
 " original repos on github
-" Bundle 'Lokaltog/powerline'
+Bundle 'Lokaltog/powerline'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
@@ -27,7 +27,7 @@ Bundle 'rizzatti/dash.vim'
 
 " Github repos of the user 'vim-scripts'
 " => can omit the username part
-Bundle 'powerline'
+"Bundle 'powerline'
 
 " non github repos
 " Bundle 'git://git.wincent.com/command-t.git'
@@ -35,6 +35,8 @@ Bundle 'powerline'
 
 " We're running Vim, not Vi!
 set nocompatible
+
+set encoding=utf-8
 
 " Enable syntax highlighting
 syntax on
