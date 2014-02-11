@@ -91,6 +91,15 @@ nnoremap ; :
 
 nnoremap <leader>w <C-w>v<C-w>l " ,w split verically and switch to new split
 
+" Shortcut to rapidly toggle `set list`
+nmap <leader>l :set list!<CR>
+ 
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
+"Invisible character colors
+highlight NonText guifg=#4a4a59
+highlight SpecialKey guifg=#4a4a59
+
 function! ShowRoutes() " Requires 'scratch' plugin
   :topleft 100 :split __Routes__
   " Make sure Vim doesn't write __Routes__ as a file
