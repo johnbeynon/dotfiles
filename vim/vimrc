@@ -19,10 +19,12 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-bundler'
 "Bundle 'Valloric/YouCompleteMe'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
+Bundle 'ggreer/the_silver_searcher'
 
 
 " Github repos of the user 'vim-scripts'
@@ -183,4 +185,4 @@ endfunc
 nnoremap <C-L> :call g:ToggleNuMode()<cr>
 
 " Switch from ack to ag
-let g:ackprg = 'ag --nogroup --nocolor --column'
+" let g:ackprg = 'ag --nogroup --nocolor --column'

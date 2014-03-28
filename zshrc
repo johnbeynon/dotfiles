@@ -1,71 +1,68 @@
-export EDITOR='vim'
+# Path to your oh-my-zsh configuration.
+ZSH=/Users/john/.oh-my-zsh
 
-export PATH="/usr/local/bin:$PATH"
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="avit"
 
-# Load completions for Ruby, Git, etc.
-autoload compinit
-compinit
+# Example aliases
+alias zshconfig="atom ~/.zshrc"
+alias ohmyzsh="atom ~/.oh-my-zsh"
 
-# Colors
-autoload -U colors
-colors
+# Set this to use case-sensitive completion
+# CASE_SENSITIVE="true"
 
-export TERM=xterm-256color
-[ -n "$TMUX" ] && export TERM=screen-256color
+# Uncomment this to disable bi-weekly auto-update checks
+# DISABLE_AUTO_UPDATE="true"
 
-setopt prompt_subst
+# Uncomment to change how often to auto-update? (in days)
+# export UPDATE_ZSH_DAYS=13
 
-# History
-HISTSIZE=1000
-SAVEHIST=1000
-HISTFILE=~/.history
+# Uncomment following line if you want to disable colors in ls
+# DISABLE_LS_COLORS="true"
 
-setopt inc_append_history
-setopt share_history
+# Uncomment following line if you want to disable autosetting terminal title.
+# DISABLE_AUTO_TITLE="true"
 
-# Autocompletes for w and k
-w() { cd ~/code/$1; }
-_w() { _files -W ~/Google\ Drive/workspace -/; }
-compdef _w w
+# Uncomment following line if you want to disable command autocorrection
+# DISABLE_CORRECTION="true"
 
-k() { cd ~/workspace/kyan/$1; }
-_k() { _files -W ~/workspace/kyan -/; }
-compdef _k k
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+# COMPLETION_WAITING_DOTS="true"
 
-# Show completion on first TAB
-setopt menucomplete
+# Uncomment following line if you want to disable marking untracked files under
+# VCS as dirty. This makes repository status check for large repositories much,
+# much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-GIT_PROMPT_PREFIX="%{$fg[green]%}[%{$reset_color%}" # outputs [ in green
-GIT_PROMPT_SUFFIX="%{$fg[green]%}]%{$reset_color%}" # outputs ] in green
+# Uncomment following line if you want to the command execution time stamp shown
+# in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
 
-parse_git_branch() {
-  (git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD) 2> /dev/null
-}
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git web-search rails)
 
-# If inside a Git repository, print its branch and state
-git_prompt_string() {
-local git_where="$(parse_git_branch)"
-[ -n "$git_where" ] && echo "$GIT_PROMPT_PREFIX%{$fg[yellow]%}${git_where#(refs/heads/|tags/)}$GIT_PROMPT_SUFFIX"
-}
+source $ZSH/oh-my-zsh.sh
 
-PROMPT='%~$(git_prompt_string) $ '
+# User configuration
 
-hitch() {
-  command hitch "$@"
-  if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi
-}
-alias unhitch='hitch -u'
+export PATH="/usr/local/heroku/bin:/usr/local/bin:/Users/john/.rvm/gems/ruby-2.1.1/bin:/Users/john/.rvm/gems/ruby-2.1.1@global/bin:/Users/john/.rvm/rubies/ruby-2.1.1/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Users/john/.rvm/bin:/Users/john/.rvm/bin"
+# export MANPATH="/usr/local/man:$MANPATH"
 
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+# # Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
-# Source stuff
-source ~/.bin/tmuxinator.zsh
-source ~/.bin/git-flow-completion.zsh
-source ~/code/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/code/dotfiles/aliases
-source ~/code/dotfiles/heroku
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-# added by travis gem
-source /Users/john/.travis/travis.sh
+# ssh
+# export SSH_KEY_PATH="~/.ssh/dsa_id"
