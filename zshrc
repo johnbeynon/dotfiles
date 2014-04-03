@@ -8,8 +8,8 @@ ZSH=/Users/john/.oh-my-zsh
 ZSH_THEME="avit"
 
 # Example aliases
-alias zshconfig="atom ~/.zshrc"
-alias ohmyzsh="atom ~/.oh-my-zsh"
+alias zshconfig="vim ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
 
 # Set this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -48,6 +48,7 @@ alias ohmyzsh="atom ~/.oh-my-zsh"
 plugins=(git web-search rails)
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.dotfiles/zsh/aliases
 
 # User configuration
 
