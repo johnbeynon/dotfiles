@@ -25,6 +25,7 @@ Bundle 'tpope/vim-bundler'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 Bundle 'ggreer/the_silver_searcher'
+Bundle 'tpope/vim-fugitive'
 
 
 " Github repos of the user 'vim-scripts'
@@ -127,9 +128,9 @@ map <leader>gR :call ShowRoutes()<cr>
 map <leader>t :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
 map <leader>m :CtrlPMRUFiles<cr>
-
 map <leader>gg :topleft 10 :split Gemfile<cr>
 map <leader>gr :topleft 10 :split config/routes.rb<cr>
+map <Leader>gs :Gstatus<CR>
 
 " Redo
 map U <C-r>
@@ -151,6 +152,7 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 " Map copy to Command C
 vmap <C-x> :!pbcopy<CR>  
 vmap <C-c> :w !pbcopy<CR><CR> 
+
 
 " Disable the cursor keys - you'll thank me later!
 "noremap <Up> <nop>
