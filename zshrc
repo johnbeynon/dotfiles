@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh configuration.
-ZSH=/Users/john/.oh-my-zsh
+ZSH=/Users/jbeynon/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -52,8 +52,12 @@ source $HOME/.dotfiles/zsh/aliases
 
 # User configuration
 
-export PATH="/usr/local/heroku/bin:/usr/local/bin:/Users/john/.rvm/gems/ruby-2.1.1/bin:/Users/john/.rvm/gems/ruby-2.1.1@global/bin:/Users/john/.rvm/rubies/ruby-2.1.1/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Users/john/.rvm/bin:/Users/john/.rvm/bin"
+export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
+
+PATH="/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH"
+
+export PATH="/usr/local/bin:$PATH"
 
 # # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -67,3 +71,13 @@ export PATH="/usr/local/heroku/bin:/usr/local/bin:/Users/john/.rvm/gems/ruby-2.1
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+w() { cd ~/nobackup/Google\ Drive/workspace/$1; }
+_w() { _files -W ~/nobackup/Google\ Drive/workspace -/; }
+compdef _w w
+
+hw() { cd ~/workspace/$1; }
+_hw() { _files -W ~/workspace -/; }
+compdef _hw hw

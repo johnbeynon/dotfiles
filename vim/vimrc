@@ -1,47 +1,40 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
+set encoding=utf-8
 
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
 Bundle 'gmarik/vundle'
 
 " My Bundles here:
-"
+
 " original repos on github
 Bundle 'Lokaltog/powerline'
-Bundle 'kien/ctrlp.vim'
+" Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-ruby/vim-ruby'
+Plugin 'thoughtbot/vim-rspec'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-bundler'
-"Bundle 'Valloric/YouCompleteMe'
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/dash.vim'
+Bundle 'ervandew/supertab'
+"Bundle 'rizzatti/funcoo.vim'
+"Bundle 'rizzatti/dash.vim'
 Bundle 'ggreer/the_silver_searcher'
 Bundle 'tpope/vim-fugitive'
+Plugin 'wincent/Command-T'
 
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
-" Github repos of the user 'vim-scripts'
-" => can omit the username part
-"Bundle 'powerline'
-
-" non github repos
-" Bundle 'git://git.wincent.com/command-t.git'
-" ...
-
-" We're running Vim, not Vi!
-set nocompatible
-
-set encoding=utf-8
-
-" Enable syntax highlighting
+" Ruby Stuff
 syntax on
 
 " Set the color scheme
@@ -89,6 +82,8 @@ set laststatus=2
 " Remap leader to comma
 let mapleader=","
 
+let g:rspec_runner = "os_x_iterm"
+
 " Map ; to : so one keypress less
 nnoremap ; :
 
@@ -125,12 +120,21 @@ set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 map <leader>gR :call ShowRoutes()<cr>
 
 " Map CtrlP to Command-T - weird huh?
-map <leader>t :CtrlP<cr>
-map <leader>b :CtrlPBuffer<cr>
-map <leader>m :CtrlPMRUFiles<cr>
+"map <leader>t :CtrlP<cr>
+"map <leader>b :CtrlPBuffer<cr>
+"map <leader>m :CtrlPMRUFiles<cr>
+map <Leader>bb :!bundle install<cr>
 map <leader>gg :topleft 10 :split Gemfile<cr>
 map <leader>gr :topleft 10 :split config/routes.rb<cr>
 map <Leader>gs :Gstatus<CR>
+map <Leader>h :CommandT<CR>
+map <Leader>rd :!bundle exec rspec % --format documentation<CR>
+
+" RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
 
 " Redo
 map U <C-r>
@@ -187,4 +191,4 @@ endfunc
 nnoremap <C-L> :call g:ToggleNuMode()<cr>
 
 " Switch from ack to ag
-" let g:ackprg = 'ag --nogroup --nocolor --column'
+let g:ackprg = 'ag --nogroup --nocolor --column'
