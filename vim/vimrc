@@ -9,8 +9,6 @@ call vundle#begin()
 " required! 
 Bundle 'gmarik/vundle'
 
-" My Bundles here:
-
 " original repos on github
 Bundle 'Lokaltog/powerline'
 " Bundle 'kien/ctrlp.vim'
@@ -19,6 +17,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-ruby/vim-ruby'
 Plugin 'thoughtbot/vim-rspec'
+Plugin 'tpope/vim-dispatch'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-commentary'
@@ -98,43 +97,23 @@ set listchars=tab:▸\ ,eol:¬
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 
-function! ShowRoutes() " Requires 'scratch' plugin
-  :topleft 100 :split __Routes__
-  " Make sure Vim doesn't write __Routes__ as a file
-  :set buftype=nofile
-  " Delete everything
-  :normal 1GdG
-  " Put routes output in buffer
-  :0r! rake -s routes
-  " Size window to number of lines (1 plus rake output length)
-  :exec ":normal " . line("$") . "_ "
-  " Move cursor to bottom
-  :normal 1GG
-  " Delete empty trailing line
-  :normal dd
-endfunction
 
 " powerline
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
-map <leader>gR :call ShowRoutes()<cr>
-
-" Map CtrlP to Command-T - weird huh?
-"map <leader>t :CtrlP<cr>
-"map <leader>b :CtrlPBuffer<cr>
-"map <leader>m :CtrlPMRUFiles<cr>
 map <Leader>bb :!bundle install<cr>
 map <leader>gg :topleft 10 :split Gemfile<cr>
 map <leader>gr :topleft 10 :split config/routes.rb<cr>
 map <Leader>gs :Gstatus<CR>
-map <Leader>h :CommandT<CR>
+map <Leader>t :CommandT<CR>
 map <Leader>rd :!bundle exec rspec % --format documentation<CR>
+map <Leader>rf :CommandTFlush<CR>:CommandT<CR>
 
 " RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+"map <Leader>t :call RunCurrentSpecFile()<CR>
+"map <Leader>s :call RunNearestSpec()<CR>
+"map <Leader>l :call RunLastSpec()<CR>
+"map <Leader>a :call RunAllSpecs()<CR>
 
 " Redo
 map U <C-r>
@@ -157,6 +136,12 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 vmap <C-x> :!pbcopy<CR>  
 vmap <C-c> :w !pbcopy<CR><CR> 
 
+" Fuzzy finder: ignore stuff that can't be opened, and generated files
+let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
+
+
+"Now using thoughtbot/vim-rspec and tpope/dispatch.
+let g:rspec_command = "Dispatch rspec {spec}"
 
 " Disable the cursor keys - you'll thank me later!
 "noremap <Up> <nop>

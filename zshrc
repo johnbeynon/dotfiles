@@ -58,6 +58,7 @@ export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
 PATH="/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH"
 
 export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/X11/bin:$PATH"
 
 # # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -81,3 +82,23 @@ compdef _w w
 hw() { cd ~/workspace/$1; }
 _hw() { _files -W ~/workspace -/; }
 compdef _hw hw
+
+export DOCKER_TLS_VERIFY="1"
+export DOCKER_HOST="tcp://192.168.99.100:2376"
+export DOCKER_CERT_PATH="/Users/jbeynon/.docker/machine/machines/default"
+export DOCKER_MACHINE_NAME="default"
+
+# Run this command to configure your shell:
+# # eval $(docker-machine env default)
+
+function curlsupp() {
+  curlapi https://support-api.heroku.com/$1
+}
+
+function r53lookup() {
+  curl r53lookup.herokuapp.com/lookup\?name=$1
+}
+
+hevents() { 
+  app="$1"; days="$2"; heroku sudo events:app -a $app --from $(ruby -rDate -e "puts Date.today - ${days:-30}"); 
+}

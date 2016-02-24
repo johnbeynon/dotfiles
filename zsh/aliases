@@ -1,16 +1,16 @@
 alias gs='git status'
-alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+alias gcm="git commit -m"
+alias gca="git commit --amend --no-edit"
+alias gp='git push'
+alias gpom='git push origin master'
+alias gphm='git push heroku master'
 alias redis='redis-server /usr/local/etc/redis.conf'
-alias mysqlstart='mysql.server start'
-alias mysqlstop='mysql.server stop'
 alias h='heroku'
 alias hs='heroku sudo'
 alias hsz='heroku sudo:run zsh'
-alias fs='forego start'
-alias fr='forego run'
+alias fs='foreman start'
+alias fr='foreman run'
 alias es='elasticsearch -f -D es.config=/usr/local/opt/elasticsearch/config/elasticsearch.yml'
-
 
 alias hbash='heroku sudo run bash -a'
 alias hconfig='heroku sudo config -a'
@@ -21,3 +21,4 @@ alias hdomains='heroku sudo domains -a'
 alias hcerts='heroku sudo certs -a'
 alias hps='heroku sudo ps -a'
 alias hlogs='heroku sudo logs -t -a'
+alias curlapi='curl -s -H "Authorization: Bearer `heroku auth:token`" '
