@@ -5,7 +5,7 @@ ZSH=/Users/jbeynon/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="avit"
+ZSH_THEME="honukai"
 
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
@@ -55,7 +55,7 @@ source $HOME/.dotfiles/zsh/aliases
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
-PATH="/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH"
+PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/X11/bin:$PATH"
@@ -74,6 +74,7 @@ export PATH="/usr/X11/bin:$PATH"
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+eval "$(nodenv init -)"
 
 w() { cd ~/nobackup/Google\ Drive/workspace/$1; }
 _w() { _files -W ~/nobackup/Google\ Drive/workspace -/; }
@@ -83,10 +84,10 @@ hw() { cd ~/workspace/$1; }
 _hw() { _files -W ~/workspace -/; }
 compdef _hw hw
 
-export DOCKER_TLS_VERIFY="1"
-export DOCKER_HOST="tcp://192.168.99.100:2376"
-export DOCKER_CERT_PATH="/Users/jbeynon/.docker/machine/machines/default"
-export DOCKER_MACHINE_NAME="default"
+#export DOCKER_TLS_VERIFY="1"
+#export DOCKER_HOST="tcp://192.168.99.100:2376"
+#export DOCKER_CERT_PATH="/Users/jbeynon/.docker/machine/machines/default"
+#export DOCKER_MACHINE_NAME="default"
 
 # Run this command to configure your shell:
 # # eval $(docker-machine env default)

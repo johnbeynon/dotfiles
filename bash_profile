@@ -56,7 +56,7 @@ function prompt_func() {
 }
  
 PROMPT_COMMAND=prompt_func
-#export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
 export NODE_PATH="/usr/local/lib/node"
 export NODE_PATH="/usr/local/lib/node_modules"
 export ARCHFLAGS="-arch x86_64"
