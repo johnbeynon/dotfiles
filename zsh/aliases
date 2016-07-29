@@ -8,8 +8,6 @@ alias redis='redis-server /usr/local/etc/redis.conf'
 alias h='heroku'
 alias hs='heroku sudo'
 alias hsz='heroku sudo:run zsh'
-alias fs='foreman start'
-alias fr='foreman run'
 alias es='elasticsearch -f -D es.config=/usr/local/opt/elasticsearch/config/elasticsearch.yml'
 
 alias hbash='heroku sudo run bash -a'
