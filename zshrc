@@ -96,10 +96,15 @@ function curlsupp() {
   curlapi https://support-api.heroku.com/$1
 }
 
+function curlstaging() {
+  curlapi https://support-api-staging.herokuapp.com/$1
+}
+
 function r53lookup() {
   curl r53lookup.herokuapp.com/lookup\?name=$1
 }
 
-hevents() { 
-  app="$1"; days="$2"; heroku sudo events:app -a $app --from $(ruby -rDate -e "puts Date.today - ${days:-30}"); 
+hevents() {
+  app="$1"; days="$2"; heroku sudo events:app -a $app --from $(ruby -rDate -e "puts Date.today - ${days:-30}");
 }
+fpath=( /Users/jbeynon/.local/share/heroku/client/node_modules/cli-engine/autocomplete/zsh $fpath ); autoload -Uz compinit; compinit;
